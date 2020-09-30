@@ -28,7 +28,7 @@ g++ -o ./dist/server ./src/server.cpp  -lboost_system -lpthread -std=c++11
 ```
 # if you want to test from ssh make sure ssh is active on the host
 ``` bash
-in VBox : Conf/network/NAT -> advanced port fowarding : ssh | TCP | 127.0.0.1  | <IP_VM> | 2522
+in VBox : Conf/network/NAT -> advanced port fowarding : ssh | TCP | 127.0.0.1  |  2522 | <IP_VM> | 22
 systemctl ssh status // active(running)
 also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 ```
