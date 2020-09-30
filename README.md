@@ -21,10 +21,18 @@ docker exec -ti Centos7 /bin/bash
 ```
 # build
 ``` bash
+git clone https://github.com/kubeCorn/test-crow.git
+cd test-crow
 mkdir dist
 g++ -o ./dist/server ./src/server.cpp  -lboost_system -lpthread -std=c++11
 ```
-# test 
+# if you want to test from ssh make sure ssh is active on the host
+``` bash
+in VBox : Conf/network/NAT -> advanced port fowarding : ssh | TCP | 127.0.0.1  | <IP_VM> | 2522
+systemctl ssh status // active(running)
+also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
+```
+# test in docker
 ``` bash
 dist/server &
 curl http://localhost:18080
