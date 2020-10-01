@@ -13,7 +13,7 @@ cd test-crow
 bazel build --cxxopt=-std=c++11 //apps/server:crow_server
 bazel build --cxxopt=-std=c++11 //apps/client:crow_client
 ```
-# if you want to test from ssh make sure ssh is active on the host
+## [optional] if you want to test from ssh tunnel make sure ssh is active on the host
 ``` bash
 in VBox : Conf/network/NAT -> advanced port fowarding : ssh | TCP | 127.0.0.1  |  2522 | <IP_VM> | 22
 systemctl ssh status // active(running)
