@@ -1,53 +1,5 @@
 load("@//third_party:boost.bzl","boost_library")
 
-#BOOST_CTX_ASM_SOURCES = select({
-#    "@third_party//:linux": [
-#        "libs/context/scr/asm/jump_i386_sysv_elf_gas.S",
-#        "libs/context/scr/asm/make_i386_sysv_elf_gas.S",
-#        "libs/context/scr/asm/ontop_i386_sysv_elf_gas.S",
-#    ],
-#    "@third_party//:osx_x86_64": [
-#        "libs/context/scr/asm/jump_i386_sysv_macho_gas.S",
-#        "libs/context/scr/asm/make_i386_sysv_macho_gas.S",
-#        "libs/context/scr/asm/ontop_i386_sysv_macho_gas.S",
-#    ],
-#    "@third_party//:windows_x86_64": [
-#        "libs/context/scr/asm/jump_x86_64_ms_pe_masm.asm",
-#        "libs/context/scr/asm/make_x86_64_ms_pe_masm.asm",
-#        "libs/context/scr/asm/ontop_x86_64_ms_pe_masm.asm",
-#    ],
-#
-#})
-
-
-#boost_library(
-#    name = "context",
-#    srcs = BOOST_CTX_ASM_SOURCES + select({
-#        "@third_party//:linux_x86_64": [
-#            "libs/context/src/posix/stack_traits.cpp",    
-#        ],
-#        "@third_party//:osx_x86_64": [
-#            "libs/context/src/posix/stack_traits.cpp",
-#        ],
-#        "@third_party//:windows_x86_64": [
-#            "libs/context/src/posix/stack_traits.cpp",
-#        ],
-#    }),
-#    exclude_src = [
-#        "libs/context/src/fiber.cpp",
-#        "libs/context/src/untested.cpp",
-#        "libs/context/src/continuation.cpp",
-#    ],
-#    visibility = ["//visibility:public"],
-#    deps = [
-#        ":assert",
-#        ":config",
-#        ":cstdint",
-#        ":detail",
-#        ":intrusive_ptr",
-#    ],
-#)
-
 boost_library(
     name = "algorithm",
     deps = [ 
