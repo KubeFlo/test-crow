@@ -1,13 +1,28 @@
 # test-crow
 ``` bash
-test-crow
+.
+├── apps
+│   ├── client
+│   │   ├── BUILD
+│   │   └── src
+│   │       └── client.cpp
+│   └── server
+│       ├── BUILD
+│       └── src
+│           └── server.cpp
 ├── LICENSE
 ├── README.md
 ├── src
-│   ├── client.cpp
 │   ├── crow_all.h
 │   └── server.cpp
-├── third-party
+├── third_party
+│   ├── boost.bzl
+│   ├── BUILD
+│   ├── BUILD.boost
+│   ├── crow
+│   │   ├── BUILD
+│   │   └── crow_all.h
+│   ├── deps.bzl
 │   └── getTimeOfDay
 │       ├── BUILD
 │       ├── include
@@ -15,9 +30,10 @@ test-crow
 │       └── src
 │           └── TimeStamp.cpp
 └── WORKSPACE
+
 ```
 # setup
-you need curl to build the client app
+you need to install curl to build the client app
 ``` bash
 sudo yum install libcurl-dev
 ``` 
@@ -32,7 +48,7 @@ bazel build --cxxopt=-std=c++11 //apps/client:crow_client
 ## [optional] if you want to test from ssh tunnel make sure ssh is active on the host
 ``` bash
 in VBox : Conf/network/NAT -> advanced port fowarding : ssh | TCP | 127.0.0.1  |  2522 | <IP_VM> | 22
-systemctl ssh status // active(running)
+systemctl ssh status // active(running) if not installed ( try sudo yum –y install openssh-server openssh-clients ) 
 also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 ```
 
@@ -42,5 +58,5 @@ also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 ./crow_client 8080 // terminal 2  
 ```
 ``` console
-response : {"Message":"hhello world","ID":57,"Date":"Thu Oct  1 11:09:26 2020\n"}
+response in Terminal1 : {"Message":"hello world","ID":57,"Date":"Thu Oct  1 11:09:26 2020\n"}
 ```
