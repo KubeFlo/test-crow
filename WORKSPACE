@@ -55,6 +55,7 @@ container_pull(
     tag = "focal",
 )
 
+# docker image used by client
 load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
 
 container_pull(
