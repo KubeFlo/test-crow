@@ -35,7 +35,7 @@
 # setup
 you need to install curl to build the client app
 ``` bash
-sudo yum install libcurl-dev
+sudo yum install libcurl-devel
 ``` 
 
 # build
