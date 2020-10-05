@@ -5,11 +5,16 @@
 #include <time.h>      
 int main(int argc, char *argv[])
 {
-     srand (time(NULL));
+    srand (time(NULL));
     crow::SimpleApp app;
-    int aPort = atoi(argv[1]);
+
+    int aPort = 9080;
+    if(argv[1] != NULL)
+    {
+       aPort = atoi(argv[1]);
+    }
     const char * aMessage = "...";
-     TimeStamp atime;
+    TimeStamp atime;
     std::string aDate();
     if(argc == 3){
     aMessage =argv[2];
