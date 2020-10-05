@@ -42,8 +42,22 @@ sudo yum install libcurl-devel
 ``` bash
 git clone https://github.com/kubeCorn/test-crow.git
 cd test-crow
-bazel build --cxxopt=-std=c++11 //apps/server:crow_server
-bazel build --cxxopt=-std=c++11 //apps/client:crow_client
+bazel build //apps/server:crow_server_bin
+bazel build //apps/client:crow_client_bin
+
+```
+# create image
+``` bash
+bazel run //apps/server:server_image
+bazel run //apps/client:client_image
+
+
+```
+# push image
+``` bash
+bazel run //apps/server:server_push
+bazel run //apps/client:client_push
+
 ```
 ## [optional] if you want to test from ssh tunnel make sure ssh is active on the host
 ``` bash
@@ -60,3 +74,14 @@ also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 ``` console
 response in Terminal1 : {"Message":"hello world","ID":57,"Date":"Thu Oct  1 11:09:26 2020\n"}
 ```
+
+
+```
+```
+# Test with image
+``` bash 
+for now the port is hard coded in the image
+docker run -d -p 9080:9080 crow/apps/server:v1 9080 yourMessage
+docker run --net=host --rm  crow/apps/client:v1 9080
+
+
