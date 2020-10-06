@@ -65,8 +65,8 @@ bazel run //apps/client:client_image
 ```
 # push image
 ``` bash
-bazel run //apps/server:server_push
-bazel run //apps/client:client_push
+bazel run //apps/server:server_push --embed_label="your_new_image_version"
+bazel run //apps/client:client_push  --embed_label="your_new_image_version"
 
 ```
 ## [optional] if you want to test from ssh tunnel make sure ssh is active on the host

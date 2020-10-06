@@ -28,8 +28,8 @@ container_push(
    format = "Docker",
    registry = "docker.pkg.github.com",
    repository = "kubecorn/test-crow/server",
-   tag = "v1",
-  #tag = "{BUILD_EMBED_LABEL}"
+   #tag = "v1",
+  tag = "{BUILD_EMBED_LABEL}"
 
 )
 
