@@ -6,29 +6,39 @@
 │   │   ├── BUILD
 │   │   └── src
 │   │       └── client.cpp
-│   └── server
+│   ├── server
+│   │   ├── BUILD
+│   │   └── src
+│   │       └── server.cpp
+│   └── test
 │       ├── BUILD
 │       └── src
-│           └── server.cpp
+│           └── TestServer.cpp
+├── docker
+│   └── Dockerfile.base
 ├── LICENSE
 ├── README.md
-├── src
-│   ├── crow_all.h
-│   └── server.cpp
 ├── third_party
 │   ├── boost.bzl
 │   ├── BUILD
 │   ├── BUILD.boost
+│   ├── Config
+│   │   ├── BUILD
+│   │   ├── include
+│   │   │   └── Config.h
+│   │   └── src
+│   │       └── Config.cpp
 │   ├── crow
 │   │   ├── BUILD
 │   │   └── crow_all.h
 │   ├── deps.bzl
-│   └── getTimeOfDay
-│       ├── BUILD
-│       ├── include
-│       │   └── TimeStamp.h
-│       └── src
-│           └── TimeStamp.cpp
+│   ├── getTimeOfDay
+│   │   ├── BUILD
+│   │   ├── include
+│   │   │   └── TimeStamp.h
+│   │   └── src
+│   │       └── TimeStamp.cpp
+│   └── gtest.BUILD
 └── WORKSPACE
 
 ```
@@ -75,13 +85,30 @@ also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 response in Terminal1 : {"Message":"hello world","ID":57,"Date":"Thu Oct  1 11:09:26 2020\n"}
 ```
 
-
-```
-```
 # Test with image
 ``` bash 
 for now the port is hard coded in the image
 docker run -d -p 9080:9080 crow/apps/server:v1 9080 yourMessage
 docker run --net=host --rm  crow/apps/client:v1 9080
+```
+# Unit Test 
+``` bash
+bazel build //apps/test:test
+bazel-bin/apps/test/test
+```
+``` console
+response  :==========] Running 4 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 4 tests from TestServer
+[ RUN      ] TestServer.when_set_Port_Message_Should_Works
+    
+    // ... // 
 
+[       OK ] TestServer.when_Unset_all_Should_Default (0 ms)
+[----------] 4 tests from TestServer (0 ms total)
 
+[----------] Global test environment tear-down
+[==========] 4 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 4 tests.
+
+```
