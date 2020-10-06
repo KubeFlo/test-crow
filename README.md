@@ -66,9 +66,9 @@ systemctl ssh status // active(running) if not installed ( try sudo yum –y ins
 also verify response from ping 8.8.8.8 -> ok you are connected to the wwweb
 ```
 
-# test on port 8080 with "hello world" message
+# test on port 8080 with "hello world" message each "200 ms"
 ``` bash
-./crow_server 8080 "hello world" //terminal 1
+./crow_server 8080 "hello world" 200 //terminal 1
 ./crow_client 8080 // terminal 2  
 ```
 ``` console
